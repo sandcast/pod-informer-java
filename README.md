@@ -8,7 +8,7 @@ try building with:
 
 and running with:
 
-```java -jar target/pod-informer-java-1.0-SNAPSHOT-jar-with-dependencies.jar```
+```java -jar target/pod-informer-java-1.0.0-SNAPSHOT.jar```
 
 
 the below plugin dependency version is where it is because on windows i had to use snapshot build of jkube to make it work.
