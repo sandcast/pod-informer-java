@@ -10,6 +10,7 @@ import io.fabric8.kubernetes.client.informers.SharedIndexInformer;
 import io.fabric8.kubernetes.client.informers.SharedInformerFactory;
 
 import java.util.concurrent.CountDownLatch;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class PodInformer {
@@ -39,9 +40,11 @@ public class PodInformer {
                         }
                     }
             );
-            logger.info("Starting all registered informers");
+            logger.info("Starting all registered informers!!!");
             sharedInformerFactory.addSharedInformerEventListener(
-                    exception -> logger.info("Exception occurred, but caught: " + exception.getMessage())
+                    exception -> {
+                        logger.log(Level.SEVERE,"Exception occurred, but caught " + exception.getMessage(), exception);
+                    }
             );
             sharedInformerFactory.startAllRegisteredInformers();
             informerCompleted.await(); //hang out forever
